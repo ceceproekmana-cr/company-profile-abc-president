@@ -2,16 +2,31 @@
   "version": 2,
   "builds": [
     {
-      "src": "dist/**",
+      "src": "public/**",
       "use": "@vercel/static"
+    },
+    {
+      "src": "api/index.php",
+      "use": "@vercel/php"
     }
   ],
   "routes": [
     {
+      "src": "/api/(.*)",
+      "dest": "/api/index.php"
+    },
+    {
+      "src": "/(.*)\\.(css|js|jpg|jpeg|png|gif|ico|svg|webp|woff|woff2|ttf|eot|map|json|xml)$",
+      "dest": "/public/$1.$2"
+    },
+    {
       "src": "/(.*)",
-      "dest": "dist/index.php"
+      "dest": "/api/index.php"
     }
   ],
-  "buildCommand": "npm run vercel-build",
-  "outputDirectory": "dist"
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.6.0"
+    }
+  }
 }
