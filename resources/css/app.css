@@ -1,0 +1,50 @@
+@import 'tailwindcss';
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+        'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+/* HERO */
+.hero-section {
+    height: 400px;
+    background: linear-gradient(90deg, #dc3545, #28a745);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* PRODUCT CARD */
+.produk-card {
+    border-radius: 15px;
+    transition: 0.3s;
+}
+
+/* IMAGE */
+.produk-card img {
+    height: 200px;
+    object-fit: contain;
+    transition: 0.3s;
+}
+
+/* HOVER */
+.produk-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+}
+
+.produk-card:hover img {
+    transform: scale(1.05);
+}
+
+/* TITLE */
+.produk-card h5 {
+    font-weight: 600;
+}
+
+
