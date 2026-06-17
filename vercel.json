@@ -15,5 +15,7 @@
       "src": "/(.*)",
       "dest": "/api/index.php"
     }
-  ]
+  ],
+  "installCommand": "echo 'Skip Install'",
+  "buildCommand": "echo 'Skip Build'"
 }
