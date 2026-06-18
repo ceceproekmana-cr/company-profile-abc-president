@@ -1,21 +1,12 @@
 <?php
+// api/index.php
 
-use Illuminate\Http\Request;
+// Memaksa Laravel untuk menggunakan /tmp untuk path yang butuh write access
+putenv('APP_CONFIG_CACHE=/tmp/config.php');
+putenv('APP_EVENTS_CACHE=/tmp/events.php');
+putenv('APP_PACKAGES_CACHE=/tmp/packages.php');
+putenv('APP_ROUTES_CACHE=/tmp/routes.php');
+putenv('APP_SERVICES_CACHE=/tmp/services.php');
+putenv('VIEW_COMPILED_PATH=/tmp');
 
-define('LARAVEL_START', microtime(true));
-
-// Daftarkan Autoloader Composer secara absolut ke folder root atas
-if (file_exists(__DIR__ . '/../vendor/autoload.php')) {
-    require __DIR__ . '/../vendor/autoload.php';
-}
-
-// Jalankan Aplikasi bootstrap Laravel 11/12
-$app = require_once __DIR__ . '/../bootstrap/app.php';
-
-$handle = $app->make(Illuminate\Contracts\Http\Kernel::class);
-
-$response = $handle->handle(
-    $request = Request::capture()
-)->send();
-
-$handle->terminate($request, $response);
+require __DIR__ . '/../public/index.php';
